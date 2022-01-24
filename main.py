@@ -5,9 +5,18 @@ parsed_input = []
 
 
 def iterative(data):
+    iter_output = []
+    curr_iter = 0
     for data_iter in data:
-        if data[data_iter][1] == 'file' or data[data_iter][1] == 'dependency':
-            return
+        curr_file = ''
+        if data[curr_iter][1] == 'file':
+            curr_file = file
+        if data[curr_iter][1] == 'dependency':
+            iter_output.append([curr_file, data[curr_iter][2][1]])
+        curr_iter = curr_iter + 1
+        if curr_iter > len(data):
+            break
+    return iter_output
 
 
 class HTMLToAsciiDoc(HTMLParser):
@@ -25,5 +34,9 @@ parser = HTMLToAsciiDoc()
 with open("input.html", "r") as file:
     input = file.read()
 parser.feed(input)
-for loop_itr in parsed_input:
-    print(loop_itr)
+
+# for loop_itr in parsed_input:
+#    print(loop_itr)
+
+out = iterative(parsed_input)
+print(out)
