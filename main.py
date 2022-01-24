@@ -91,7 +91,7 @@ log("Writing output file as .adoc...")
 out_file = open("output.adoc", "w")
 out_file.write('[options="header", cols="1,2"]\n')
 out_file.write('|===\n')
-out_file.write('|Externes Maven-Package |Verwendet von (Pfad zur Datei der eigenen Anwendung)')
+out_file.write('|Externe Abhängigkeit |Verwendet von (Pfad zur Datei der eigenen Anwendung)')
 for item in list_dependency_usages:
     out_file.write("|" + str(item[0]) + " |" + str(item[1]) + "\n")
 out_file.write('|===\n')
