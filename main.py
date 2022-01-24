@@ -17,7 +17,7 @@ def iterative(data):
         if data_iter[1] == 'dependency':
             print('iter: encountered dependency')
             print('iter: curr_file: ', curr_file)
-            iter_output.append([curr_file, 'a dependency'])
+            iter_output.append([curr_file[1], 'a dependency'])
     return iter_output
 
 
@@ -25,7 +25,7 @@ class HTMLToAsciiDoc(HTMLParser):
     def handle_starttag(self, tag, attrs):
         children = []
         for attr in attrs:
-            children.append(attr)
+            children = attr
         parsed_input.append(["START", tag, children])
 
     def handle_endtag(self, tag):
