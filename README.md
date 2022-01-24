@@ -5,6 +5,7 @@ By running this script correctly, you receive an AsciiDoc output that you can ju
 
 ## Dependencies
 - python 3.9.0
+- IntelliJ Idea
 
 ## How to use
 - Download the project and unzip it.
