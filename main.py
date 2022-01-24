@@ -40,11 +40,14 @@ iter_out = iterative(parsed_input)
 count = 0
 for item in iter_out:
     if not any(item[1] in sl for sl in list_dependency_usages):
-        list_dependencies.append(item[1])
-        list_dependency_usages.append([item[1], []])
+        if "$MAVEN_REPOSITORY$" in item[1]:
+            list_dependencies.append(item[1])
+            list_dependency_usages.append([item[1], []])
     count = count + 1
 
 for item in iter_out:
+    if not "$MAVEN_REPOSITORY$" in item[1]:
+        continue
     pos = list_dependencies.index(item[1])
     if not item[1] in list_dependency_usages:
         list_dependency_usages[pos][1].append(item[0])
