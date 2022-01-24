@@ -4,7 +4,7 @@ This script is supposed to automate the tedious task of listing all your externa
 By running this script correctly, you receive an AsciiDoc output that you can just copy and paste into your DevDoc
 
 ## Dependencies
-- ...python 3.9.0
+- python 3.9.0
 
 ## How to use
 - Download the project and unzip it.
