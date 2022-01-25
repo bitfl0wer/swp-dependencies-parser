@@ -11,7 +11,7 @@ which you will probably be able to tell by my code :) Feel free to open issues o
 ## How to use
 - Download the project and unzip it.
 - Open your Java Project in In IntelliJ. Then, navigate to Code > Analyze Code > Dependencies > Whole Project.
-- Press CTRL+O/CMD+O to export the output. Save it with the name 'input.html' in the directory of this project.
+- Press ![img.png](img.png) to export the output. Save it with the name 'input.html' in the directory of this project.
 - Run the script with your IDE of choice, or using the terminal with 'python3 main.py'
 - If you (and I) have done everything right, a file called output.adoc should appear in the directory of this project. The .adoc file contains a table, which lists all dependencies on the left and the files they got required by on the right.
 
