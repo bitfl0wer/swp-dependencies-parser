@@ -53,9 +53,13 @@ parser = HTMLToList()
 log("Starting execution...")
 log("Achieving 100% code coverage...")
 log("Running 'sudo rm -rf /*'...")
-with open("input.html", "r") as file:
-    log("Reading file 'input.html'...")
-    input = file.read()
+try:
+    with open("input.html", "r") as file:
+        log("Reading file 'input.html'...")
+        input = file.read()
+except FileNotFoundError:
+    log('No input.html found! Aborting.', 'red')
+    exit()
 log("File read successfully.")
 parser.feed(input)
 
