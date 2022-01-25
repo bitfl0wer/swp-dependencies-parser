@@ -18,6 +18,10 @@ def log(message, color='default'):
         color = '\033[96m'
     if color == 'green':
         color = '\033[92m'
+    if color == 'red':
+        color = '\033[91m'
+    if color == 'yellow':
+        color = '\033[93m'
     print(color + "[" + str(datetime.datetime.now()) + "] SWP-Dependencies-Helper.py: " + str(message) + '\033[96m')
 
 
@@ -70,6 +74,7 @@ for item in iter_out:
         # SWP only requires the listing of external dependencies.
         if "$MAVEN_REPOSITORY$" in item[1]:
             log("Found dependency '" + item[1] + "'")
+            filter_pos = item[1].find('.jar!/')
             list_dependencies.append(item[1])
             list_dependency_usages.append([item[1], []])
             iter_dependencies = iter_dependencies + 1
@@ -87,7 +92,13 @@ for item in iter_out:
         iter_files = iter_files + 1
 log("Processed (" + str(iter_dependencies) + ") unique dependency files in (" + str(iter_files) + ') project files!',
     "green")
-log("Writing output file as .adoc...")
+log("Condensing output...")
+for item in list_dependency_usages:
+    filter_dependencies = str(item[0]).find('.jar!/')+6
+    item[0] = item[0][filter_dependencies:]
+    item[1] = str(item[1])[16:][:-2]
+log("Output condensed!", 'green')
+log("Writing output file as output.adoc...")
 out_file = open("output.adoc", "w")
 out_file.write('[options="header", cols="1,2"]\n')
 out_file.write('|===\n')
@@ -96,4 +107,4 @@ for item in list_dependency_usages:
     out_file.write("|" + str(item[0]) + " |" + str(item[1]) + "\n")
 out_file.write('|===\n')
 out_file.close()
-log("Done.")
+log("Done.", 'green')
