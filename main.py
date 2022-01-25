@@ -102,6 +102,7 @@ for item in list_dependency_usages:
     item[0] = item[0][filter_dependencies:]
     for i in range(len(item[1])):
         item[1][i] = str(item[1][i])[14:]
+    item[1] = str(item[1])[1:-1]
 log("Output condensed!", 'green')
 log("Writing output file as output.adoc...")
 out_file = open("output.adoc", "w")
