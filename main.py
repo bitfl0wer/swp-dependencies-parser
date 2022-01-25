@@ -7,6 +7,7 @@
 # basic things such as arrays/lists, so I am absolutely aware that this could most likely have been done way better.
 # You are happy to improve upon the project by submitting issues or pull requests :)
 import datetime
+import time
 from html.parser import HTMLParser
 
 parsed_input = []
@@ -50,6 +51,7 @@ class HTMLToList(HTMLParser):
 
 
 parser = HTMLToList()
+time_start = time.time()
 log("Starting execution...")
 log("Achieving 100% code coverage...")
 log("Running 'sudo rm -rf /*'...")
@@ -98,7 +100,7 @@ log("Processed (" + str(iter_dependencies) + ") unique dependency files in (" + 
     "green")
 log("Condensing output...")
 for item in list_dependency_usages:
-    filter_dependencies = str(item[0]).find('.jar!/')+6
+    filter_dependencies = str(item[0]).find('.jar!/') + 6
     item[0] = item[0][filter_dependencies:]
     for i in range(len(item[1])):
         item[1][i] = str(item[1][i])[14:]
@@ -114,3 +116,4 @@ for item in list_dependency_usages:
 out_file.write('|===\n')
 out_file.close()
 log("Done.", 'green')
+log("Took " + str(time.time() - time_start) + ' seconds.')
